@@ -1,0 +1,349 @@
+.sheet-body{
+  background:#white;
+  color:#000;
+}
+
+.sheet-container {
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  transition: background-color 2s;
+}
+
+hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-width: 3px;
+}
+h2 {
+  font-size: 12px;
+}
+
+.char-details-box {
+  display: flex;
+  gap: 1rem;
+}
+.char-details {
+  width: 150px;
+}
+
+.charsheet input[type="number"].damage_value {
+  width: 100px;
+}
+.charsheet .repcontainer[data-groupname="repeating_weapons"] {
+  width: 100vw;
+}
+
+.stat-container {
+  background-color:grey;
+  border-radius:1rem;
+  padding:5px 5px 10px;
+}
+.stat-box {
+  display: grid;
+  grid-template-columns: repeat(6, 10rem);
+  gap: 1rem;
+}
+.stat-box > div {
+  width: 150px;
+}
+.stats-row {
+  width: 100vw;
+}
+.col-stats {
+  box-sizing: border-box;
+  width: 75px;
+}
+.armour-box {
+  display: grid;
+  grid-template-columns: repeat(4, 5rem);
+  gap: 1rem;
+}
+.armour-box > div,
+input {
+  justify-self: center;
+  align-self: center;
+}
+.row-armor {
+  box-sizing: border-box;
+  width: 50vw;
+}
+.col1 {
+  box-sizing: border-box;
+  width: 100px;
+  max-height: 2rem;
+}
+.col2 {
+  box-sizing: border-box;
+  width: 100px;
+}
+
+.col3 {
+  box-sizing: border-box;
+  width: 25%;
+}
+.col_weapon_mod {
+  width: 100px;
+}
+.weapon_table {
+  width: 90%;
+}
+.weapon_row {
+  display: grid;
+  grid-template-columns: repeat(9, 100px);
+  gap: 1rem;
+}
+
+.weapon_row > .col2,
+.col1,
+.col_weapon_mod > h2 {
+  text-align: center;
+}
+.col-ammo {
+  box-sizing: border-box;
+  width: 200px;
+  margin-left: 50px;
+}
+.col-boost {
+  text-align: center;
+  width: 75px;
+}
+.gear-flex {
+  display: flex;
+  gap: 1rem;
+}
+
+input[type="number"].gear-input,
+input[type="text"].gear-input {
+  width: 100px;
+}
+
+input[type="number"],
+input[type="text"] {
+  width: 100%;
+  border-radius: 5px;
+  border-color: #000;
+}
+
+/* Hide actual dot/checkbox */
+input[type="radio"],
+input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 15px;
+  cursor: pointer;
+  z-index: 10;
+  margin-top: 5px;
+}
+
+input[type="checkbox"].nightmodetoggle{
+  opacity:1;
+  position:absolute;
+  transform:translate(81vw, -10px);
+  height:5rem;
+  witdh:5rem;
+}
+
+.sun,.moon{
+  opacity:0.5;
+  position:absolute;
+  transform:translateX(80vw);
+}
+
+input[type="checkbox"].nightmodetoggle:checked ~ div.sheet-container .sun{
+  display:none;  
+}
+
+
+input[type="checkbox"].nightmodetoggle:checked ~ div.sheet-container{
+  background:darkslategrey;
+  color:wheat;
+}
+
+input[type="checkbox"].nightmodetoggle:not(:checked) ~ div.sheet-container .moon{
+  display:none;  
+}
+
+/* Styles common to fake dot and checkbox */
+input[type="radio"] + span::before,
+input[type="checkbox"] + span::before {
+  border: solid 1px #000000;
+  line-height: 11px;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+
+  -moz-box-shadow: 0 0 0px #000;
+  -webkit-box-shadow: 0 0 0px #000;
+  box-shadow: 0 0 0px #000;
+
+  background: radial-gradient(#f6f6f6, #dfdfdf);
+}
+
+/* Styles unique to fake dot (checked or left of checked) */
+input[type="radio"] + span::before {
+  content: "•";
+  width: 10px;
+  height: 10px;
+  font-size: 26px;
+  font-family: "Arial";
+
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+/* Styles unique to fake checkbox (unchecked) */
+input[type="checkbox"] + span::before {
+  position: relative;
+  content: "";
+  opacity: 1;
+  width: 10px;
+  height: 10px;
+  font-size: 12px;
+
+  -moz-border-radius: 1px;
+  -webkit-border-radius: 1px;
+  border-radius: 1px;
+}
+
+/* Styles unique to fake checkbox (checked) */
+input[type="checkbox"]:checked + span::before {
+  content: "✖";
+  color: #a00;
+
+  -moz-box-shadow: 0 0 2px transparent;
+  -webkit-box-shadow: 0 0 2px transparent;
+  box-shadow: 0 0 2px transparent;
+}
+
+/* Remove dot from all radios _after_ selected one */
+input[type="radio"]:checked ~ input[type="radio"] + span::before {
+  content: "";
+}
+
+input.used + span::before {
+  content: "✖";
+  width: 12px;
+  height: 12px;
+  font-size: 12px;
+
+  -moz-border-radius: 0%;
+  -webkit-border-radius: 0%;
+  border-radius: 0%;
+}
+
+input.zero:checked + span::before {
+  opacity: 0;
+}
+
+input.zero:hover + span::before {
+  opacity: 1;
+}
+input.zero + span::before {
+  font-size: 12px;
+  content: "✖";
+  opacity: 0.25;
+}
+
+/*input.DP1Spec + span::before,
+input.DP2Spec + span::before,
+input.DP2Spec + span::before,
+input.DP3Spec + span::before,
+input.DP4Spec + span::before,
+input.DP5Spec + span::before {
+  opacity: 1;
+  margin-bottom: 10px;
+}
+
+div.DP1,
+div.DP2,
+div.DP2,
+div.DP3,
+div.DP4,
+div.DP5 {
+  display: inline;
+}
+div.DP1wSpec,
+div.DP2wSpec,
+div.DP2wSpec,
+div.DP3wSpec,
+div.DP4wSpec,
+div.DP5wSpec {
+  display: none;
+}
+
+input.DP1Spec:checked ~ div.DP1,
+input.DP2Spec:checked ~ div.DP2,
+input.DP2Spec:checked ~ div.DP2,
+input.DP3Spec:checked ~ div.DP3,
+input.DP4Spec:checked ~ div.DP4,
+input.DP5Spec:checked ~ div.DP5 {
+  display: none;
+}
+
+input.DP1Spec:checked ~ div.DP1wSpec,
+input.DP2Spec:checked ~ div.DP2wSpec,
+input.DP2Spec:checked ~ div.DP2wSpec,
+input.DP3Spec:checked ~ div.DP3wSpec,
+input.DP4Spec:checked ~ div.DP4wSpec,
+input.DP5Spec:checked ~ div.DP5wSpec {
+  display: inline;
+} */
+.skills-table .table-content .row .col4:first-child {
+  text-align: right;
+  padding-right: 20px;
+}
+.boost-adv {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  width: 45vw;
+  gap: 1rem;
+}
+.repcontainer[data-groupname="repeating_weapons"] > .repitem > .row {
+  height: 28px;
+}
+.weapon-table {
+  width: 50vw;
+}
+.ammo-table {
+  display: grid;
+  grid-template-columns: repeat(4, 200px);
+  width: 100vw;
+}
+.ammo-table > h2 {
+  text-align: center;
+  font-size: 18px;
+  max-width: 75px;
+}
+
+.charsheet button[type="roll"].textbutton {
+  background: none;
+  outline-color: transparent;
+  border: none;
+  padding: 0px;
+  cursor: pointer;
+}
+.charsheet button[type="roll"].textbutton::before {
+  content: "";
+}
+
+.charsheet button[type="roll"].textbutton:hover {
+  background-position: 0;
+  background-color: lightgray;
+  color: red;
+}
+
+.charsheet .stat-box input[type="number"] {
+  width: 100px;
+}
+
+/*@keyframes backflip{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(359.9deg)}
+}
+
+.container:hover{
+  animation-name:backflip;
+  animation-duration:60s;
+}*/

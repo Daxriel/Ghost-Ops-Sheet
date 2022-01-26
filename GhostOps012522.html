@@ -1,0 +1,311 @@
+<div class="container">
+  <!--Character Detials-->
+  <div class="char-details-box">
+    <div class="char-details"><label>Name</label><input type="text" name="attr_character_name"></div>
+    <div class="char-details"><label>Callsign</label><input type="text" name="attr_character_callsign"></div>
+    <div class="char-details"><label>Career</label><input type="text" name="attr_character_career"></div>
+    <div class="char-details"><label>Background</label><input type="text" name="attr_character_background"></div>
+    <div class="char-details"><label>Looks</label><input type="text" name="attr_character_look"></div>
+    <div class="char-details"><label>Age</label><input type="text" name="attr_character_age"></div>
+  </div>
+  <!--Character Details End-->
+  <hr>
+  <!-- Boost & Advantage -->
+  <div class="boost-adv">
+    <div>Boost</div>
+    <div class="col-boost">
+      <input type="radio" name="attr_boost" value="0" class="zero" checked />
+      <span></span>
+      <input type="radio" name="attr_boost" value="1" />
+      <span></span>
+      <input type="radio" name="attr_boost" value="2" />
+      <span></span>
+      <input type="radio" name="attr_boost" value="3" />
+      <span></span>
+    </div>
+    <div>Advantage</div>
+    <div class="col-boost">
+      <input type="radio" name="attr_advantage" value="0" class="zero" checked />
+      <span></span>
+      <input type="radio" name="attr_advantage" value="1" />
+      <span></span>
+      <input type="radio" name="attr_advantage" value="2" />
+      <span></span>
+      <input type="radio" name="attr_advantage" value="3" />
+      <span></span>
+    </div>
+    <div>AVP</div>
+    <div class="col-boost">
+      <input type="text" name="attr_avp">
+    </div>
+  </div>
+  <!-- Boost & Advantage end -->
+  <hr>
+  <!--Initiative-->
+  <div class="init">
+    <div>Initiative</div>
+    <button type="roll" name="roll_testattack" value="&{template:default} {{name=@{character_name}}} {{result=[[4dF+@{character_initiative} &{tracker}]]}}"></button>
+  </div>
+  <!--Initiative End-->
+  <hr>
+  <!-- Stats -->
+  <div class="stat-container">
+    <!--Main Stats-->
+    <label>Stats</label>
+    <div class="stat-box">
+      <div>
+        <button class="textbutton" type="roll" name="roll_testattack" value="&{template:default} {{name=@{character_name} rolls Coodination}} {{result=[[4dF+@{character_coordination}]]}}">Coordination</button>
+        <input type="number" name="attr_character_coordination">
+      </div>
+      <div>
+        <button class="textbutton" type="roll" name="roll_testattack" value="&{template:default} {{name=@{character_name} rolls Reflexes}} {{result=[[4dF + @{character_reflexes}]]}}">Reflexes</button>
+        <input type="number" name="attr_character_reflexes">
+      </div>
+      <div>
+        <button class="textbutton" type="roll" name="roll_testattack" value="&{template:default} {{name=@{character_name} rolls Fitness}} {{result=[[4dF + @{character_fitness}]]}}">Fitness</button>
+        <input type="number" name="attr_character_fitness">
+      </div>
+      <div>
+        <button class="textbutton" type="roll" name="roll_testattack" value="&{template:default} {{name=@{character_name} rolls Agility}} {{result=[[4dF + @{character_agility}]]}}">Agility</button>
+        <input type="number" name="attr_character_agility">
+      </div>
+      <div>
+        <button class="textbutton" type="roll" name="roll_testattack" value="&{template:default} {{name=@{character_name} rolls Focus}} {{result=[[4dF + @{character_focus}]]}}">Focus</button>
+        <input type="number" name="attr_character_focus">
+      </div>
+      <div>
+        <button class="textbutton" type="roll" name="roll_testattack" value="&{template:default} {{name=@{character_name} rolls Intellect}} {{result=[[4dF + @{character_intellect}]]}}">Intellect</button>
+        <input type="number" name="attr_character_intellect">
+      </div>
+    </div>
+    <hr>
+    <!-- Derived Stats -->
+    <label>Derived Stats</label>
+    <div class="stat-box">
+      <div>
+        <h2>DMG bonus</h2> <input type="number" name="attr_character_DMG bonus" value="ceil((@{character_fitness}+@{character_agility})/3)" disabled="true">
+      </div>
+      <div>
+        <h2>Defence</h2><input type="number" name="attr_character_Defence" value="ceil((@{character_reflexes}+@{character_agility})/2)" disabled="true">
+      </div>
+      <div>
+        <h2>Initiative</h2> <input type="number" name="attr_character_Initiative" value="ceil((@{character_focus}+@{character_reflexes})/2)" disabled="true">
+      </div>
+      <div>
+        <h2>Actions</h2><input type="number" name="attr_character_Actions">
+      </div>
+      <div>
+        <h2>ENC</h2><input type="number" name="attr_character_ENC" value="(@{character_fitness}+10)" disabled="true">
+      </div>
+      <div>
+        <h2>Perception</h2><input type="number" name="attr_character_Perception" value="@{character_focus}" disabled="true">
+      </div>
+    </div>
+  </div>
+  <!-- Stats End -->
+  <hr>
+  <!-- Specialisation -->
+  <div class="Specialisations_Box">
+    <h2>Specialisations</h2>
+    <fieldset class="table-content repeating_specialisation">
+      <input type="text" name="attr_specialisation_name" style="width:175px" />
+      <input type="radio" name="attr_specialisation_value" value="0" class="zero" checked />
+      <span></span>
+      <input type="radio" name="attr_specialisation_value" value="1" />
+      <span></span>
+      <input type="radio" name="attr_specialisation_value" value="2" />
+      <span></span>
+      <input type="radio" name="attr_specialisation_value" value="3" />
+      <span></span>
+      <select name="attr_stat">
+        <option value="@{character_coordination}">Coordination</option>
+        <option value="@{character_reflexes}">Reflexes</option>
+        <option value="@{character_fitness}">Fitness</option>
+        <option value="@{character_agility}">Agility</option>
+        <option value="@{character_focus}">Focus</option>
+        <option value="@{character_intellect}">Intellect</option>
+      </select>
+      <button type="roll" name="roll_testattack" value="&{template:default} {{name=@{character_name} rolls @{specialisation_name}}} {{result=[[4dF + @{specialisation_value}+@{stat}]]}}"></button>
+    </fieldset>
+  </div>
+  <!--Specialisation End -->
+  <hr>
+  <!-- Armour -->
+  <div class="armour-box">
+    <div>
+      <h2>Locations</h2>
+    </div>
+    <div>
+      <h2>Total Wounds</h2>
+    </div>
+    <div>
+      <h2>Wounds</h2>
+    </div>
+    <div>
+      <h2>Armour</h2>
+    </div>
+    <div>
+      <h2>Head</h2>
+    </div>
+    <input type="text" name="attr_total_head">
+    <input type="text" name="attr_wounds_head">
+    <input type="text" name="attr_armour_head">
+    <div>
+      <h2>Body</h2>
+    </div>
+    <input type="text" name="attr_total_body">
+    <input type="text" name="attr_wounds_body">
+    <input type="text" name="attr_armour_body">
+    <div>
+      <h2>Arms</h2>
+    </div>
+    <input type="text" name="attr_total_arms">
+    <input type="text" name="attr_wounds_arms">
+    <input type="text" name="attr_armour_arms">
+    <div>
+      <h2>Legs</h2>
+    </div>
+    <input type="text" name="attr_total_legs">
+    <input type="text" name="attr_wounds_legs">
+    <input type="text" name="attr_armour_legs">
+  </div>
+  <!-- Armour end -->
+  <hr>
+  <!-- Weapon Table -->
+  <div class="weapon_table">
+    <div class="weapon_row">
+      <div class="col2">
+        <h2>Weapon</h2>
+      </div>
+      <div class="col1">
+        <h2>Cal</h2>
+      </div>
+      <div class="col1">
+        <h2>DMG 1</h2>
+      </div>
+      <div class="col1">
+        <h2>RNG</h2>
+      </div>
+      <div class="col_weapon_mod">
+        <h2>MOD</h2>
+      </div>
+      <div class="col_weapon_mod">
+        <h2>MOD</h2>
+      </div>
+      <div class="col_weapon_mod">
+        <h2>MOD</h2>
+      </div>
+      <div class="col_weapon_mod">
+        <h2>MOD</h2>
+      </div>
+    </div>
+  </div>
+  <fieldset class="weapon_table repeating_weapons">
+    <div class="weapon_row">
+      <div class="col2">
+        <input type="text" name="attr_weapon">
+      </div>
+      <div class="col1">
+        <input type="text" name="attr_cal">
+      </div>
+      <div class="col1">
+        <input class="damage_value" type="number" name="attr_weapon_dmgone">
+      </div>
+      <div class="col1">
+        <input class="damage_value" type="number" name="attr_weapon_RNG">
+      </div>
+      <div class="col_weapon_mod">
+        <input type="text" name="attr_mod_one">
+      </div>
+      <div class="col_weapon_mod">
+        <input type="text" name="attr_mod_two">
+      </div>
+      <div class="col_weapon_mod">
+        <input type="text" name="attr_mod_three">
+      </div>
+      <div class="col_weapon_mod">
+        <input type="text" name="attr_mod_four">
+      </div>
+      <div class="col1">
+        <button type="roll" value="@{character_name} rolls [[4df + ?{Damage?|DMG1, @{weapon_dmgone}|DMG2, @{weapon_dmgtwo}|DMG3, @{weapon_dmgthree}} + ?{Modifier?|0}]] Damage with @{weapon}"></button>
+      </div>
+    </div>
+  </fieldset>
+  <!-- Weapon Table End -->
+  <hr>
+  <!-- Ammo -->
+  <div class="ammo-table">
+    <h2>Ammo</h2>
+    <div class="col-ammo">
+      <div>Pistol - </div>
+      <div class="ammo-points">
+        <input type="radio" name="attr_ammo_p" value="0" class="zero" checked />
+        <span></span>
+        <input type="radio" name="attr_ammo_p" value="1" />
+        <span></span>
+        <input type="radio" name="attr_ammo_p" value="2" />
+        <span></span>
+        <input type="radio" name="attr_ammo_p" value="3" />
+        <span></span>
+        <input type="radio" name="attr_ammo_p" value="4" />
+        <span></span>
+        <input type="radio" name="attr_ammo_p" value="5" />
+        <span></span>
+      </div>
+    </div>
+    <div class="col-ammo">
+      <div>Rifle -</div>
+      <div class="ammo-points">
+        <input type="radio" name="attr_ammo_s" value="0" class="zero" checked />
+        <span></span>
+        <input type="radio" name="attr_ammo_s" value="1" />
+        <span></span>
+        <input type="radio" name="attr_ammo_s" value="2" />
+        <span></span>
+        <input type="radio" name="attr_ammo_s" value="3" />
+        <span></span>
+        <input type="radio" name="attr_ammo_s" value="4" />
+        <span></span>
+        <input type="radio" name="attr_ammo_s" value="5" />
+        <span></span>
+      </div>
+    </div>
+    <div class="col-ammo">
+      <div>Other -</div>
+      <div class="ammo-points">
+        <input type="radio" name="attr_ammo_t" value="0" class="zero" checked />
+        <span></span>
+        <input type="radio" name="attr_ammo_t" value="1" />
+        <span></span>
+        <input type="radio" name="attr_ammo_t" value="2" />
+        <span></span>
+        <input type="radio" name="attr_ammo_t" value="3" />
+        <span></span>
+        <input type="radio" name="attr_ammo_t" value="4" />
+        <span></span>
+        <input type="radio" name="attr_ammo_t" value="5" />
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- Ammo End -->
+  <hr>
+  <!-- Gear Table -->
+  <div class="Gear_Box">
+    <div class="table-header">
+      <div class="row">
+        <div class="col3">
+          <h2>Gear</h2>
+        </div>
+      </div>
+    </div>
+    <fieldset class="repeating_gear">
+      <div name="attr_geartypeenc" class="gear-flex">
+        <h2>Gear</h2>
+        <input name="attr_geartype" class="gear-input" type="text" />
+        <h2>ENC</h2>
+        <input class="gear-input" type="number" name="attr_gearenc" />
+      </div>
+    </fieldset>
+  </div>
+</div>
